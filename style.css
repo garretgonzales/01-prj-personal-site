@@ -28,9 +28,9 @@ body {
 .hero {
   background-color: transparent;
   /* background image removed for testing navbar visibility */
-  background-image: none;
-  color: #fff;
-  padding: 80px 0 40px;
+  background-image: url("img/cesar-couto-TIvFLeqZ4ec-unsplash.jpg");
+  color: #333;
+  padding: 60px 0 40px;
   min-height: 50vh;
   text-align: center;
   position: relative;
