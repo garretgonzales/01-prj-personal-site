@@ -11,6 +11,8 @@ body {
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
+  text-align: left;
+  padding-top: 40px;
 }
 
 .hero {
@@ -19,6 +21,7 @@ body {
   padding: 120px 0 80px;
   min-height: 70vh;
   text-align: center;
+  position: relative;
 }
 
 .nav-container {
@@ -61,6 +64,24 @@ body {
   margin-top: 16px;
   font-style: italic;
   opacity: 0.9;
+}
+
+.hero .hero-content {
+  position: absolute;
+  left: 10%;
+  bottom: 40px;
+  max-width: 700px;
+  text-align: left;
+}
+
+@media (max-width: 700px) {
+  .hero .hero-content {
+    position: static;
+    left: auto;
+    bottom: auto;
+    padding-top: 20px;
+    text-align: center;
+  }
 }
 
 .fade-in {
@@ -133,7 +154,7 @@ body {
 }
 
 .contact-form {
-  max-width: 480px;
+  max-width: 640px;
   display: grid;
   gap: 12px;
   margin: 24px auto 0;
@@ -225,4 +246,98 @@ body {
     width: 100%;
     margin-right: 0;
   }
+}
+
+/* Floating contact toggle + panel */
+#contact-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #1f78b4;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 8px 28px rgba(12,40,20,0.18);
+  cursor: pointer;
+  z-index: 1200;
+}
+
+.contact-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 96px;
+  width: 640px;
+  max-width: calc(100% - 48px);
+  transform: translateY(12px) scale(0.98);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 260ms ease;
+  z-index: 1199;
+}
+
+.contact-panel.open {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.contact-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  padding: 18px;
+  box-shadow: 0 12px 36px rgba(12,40,20,0.12);
+}
+
+.contact-close {
+  float: right;
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  #contact-toggle { right: 16px; bottom: 16px; }
+  .contact-panel { right: 12px; left: 12px; bottom: 80px; width: auto; }
+}
+
+/* Contact links (LinkedIn, GitHub, Email) */
+.contact-links {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  color: #1f78b4;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.contact-links a:hover {
+  background: #f0fbff;
+}
+
+.contact-links .contact-open {
+  background: #1f78b4;
+  color: #fff;
+}
+
+.contact-links .contact-open:hover {
+  background: #155a8a;
 }

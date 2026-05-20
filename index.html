@@ -19,7 +19,7 @@
         <a href="#contact"><i class="fas fa-envelope"></i> Contact Me</a>
       </nav>
     </div>
-    <div class="container">
+    <div class="container hero-content">
       <h1 id="top">Hello, I'm David</h1>
       <p>Welcome to my portfolio site. I build simple web projects and enjoy creating clean designs with HTML and CSS.</p>
       <p class="hero-note">Scroll down to see my work and get in touch.</p>
@@ -78,7 +78,26 @@
 
     <section class="section contact" id="contact">
       <h2>Contact</h2>
-      <p>If you'd like to work together or ask a question, please use the form below. It will open your email app so I can receive your message.</p>
+      <p>If you'd like to work together or ask a question, click the envelope icon at the bottom-right to open the contact form.</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/david-gonzales-961172172/" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/garretgonzales" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" class="contact-open" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 David's Portfolio. Built with HTML and CSS.</p>
+  </footer>
+  <!-- Floating contact toggle -->
+  <button id="contact-toggle" aria-label="Open contact form"><i class="fas fa-envelope"></i></button>
+
+  <!-- Contact panel (hidden until opened) -->
+  <div id="contact-panel" class="contact-panel" aria-hidden="true">
+    <div class="contact-card">
+      <button id="contact-close" class="contact-close" aria-label="Close contact form">×</button>
+      <h3>Send a message</h3>
       <form class="contact-form" action="mailto:hello@example.com" method="POST" enctype="text/plain">
         <label for="name">Name</label>
         <input type="text" id="name" name="Name" placeholder="Your name" required>
@@ -91,12 +110,8 @@
 
         <button type="submit">Send Email</button>
       </form>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>© 2026 David's Portfolio. Built with HTML and CSS.</p>
-  </footer>
+    </div>
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -113,6 +128,41 @@
       fadeItems.forEach((item) => {
         item.classList.add('fade-in');
         observer.observe(item);
+      });
+
+      const toggle = document.getElementById('contact-toggle');
+      const panel = document.getElementById('contact-panel');
+      const closeBtn = document.getElementById('contact-close');
+
+      function openPanel() {
+        panel.classList.add('open');
+        panel.setAttribute('aria-hidden', 'false');
+      }
+      function closePanel() {
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+      }
+
+      toggle.addEventListener('click', (e) => {
+        if (panel.classList.contains('open')) closePanel(); else openPanel();
+      });
+
+      closeBtn.addEventListener('click', closePanel);
+
+      // Open contact panel from any `.contact-open` trigger (envelope)
+      const openLinks = document.querySelectorAll('.contact-open');
+      openLinks.forEach((el) => {
+        el.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          openPanel();
+        });
+      });
+
+      // Close when clicking outside the panel
+      document.addEventListener('click', (e) => {
+        if (!panel.classList.contains('open')) return;
+        if (panel.contains(e.target) || toggle.contains(e.target)) return;
+        closePanel();
       });
     });
   </script>
