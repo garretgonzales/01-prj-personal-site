@@ -15,8 +15,17 @@ body {
   padding-top: 40px;
 }
 
+/* Keep space for fixed nav */
+body {
+  padding-top: 72px;
+}
+
 .hero {
   background-color: #04360f;
+  background-image: linear-gradient(rgba(4,54,15,0.55), rgba(4,54,15,0.55)), url('img/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
   padding: 120px 0 80px;
   min-height: 70vh;
@@ -27,7 +36,15 @@ body {
 .nav-container {
   display: flex;
   justify-content: flex-end;
-  padding: 16px 0;
+  padding: 14px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  z-index: 1400;
+  box-shadow: none;
+  transition: background 220ms ease, padding 220ms ease, box-shadow 220ms ease;
 }
 
 .main-nav {
@@ -35,13 +52,26 @@ body {
   gap: 20px;
 }
 
+.nav-container.nav-scrolled {
+  padding: 6px 0;
+  background: rgba(4,54,15,0.85);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  backdrop-filter: blur(6px);
+}
+
+.nav-container.nav-scrolled .main-nav a {
+  font-size: 0.95rem;
+}
+
 .main-nav a {
-  color: #fff;
+  color: rgba(255,255,255,0.95);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  transition: color 160ms ease, opacity 160ms ease;
+  opacity: 0.95;
 }
 
 .main-nav a:hover {

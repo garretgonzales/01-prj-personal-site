@@ -58,7 +58,7 @@
           <p>Quick design practice in effort to become more productive with basic HTML/CSS without the use of external libraries.</p>
         </article>
         <article class="project-card">
-          <h3>CSS Spooky Ghost</h3>
+          <h3>CSS Animations</h3>
           <a href="https://github.com/garretgonzales/css-only-animations" target="_blank" rel="noopener noreferrer" aria-label="CSS Spooky Ghost project">
             <img src="img/spooky_ghost.gif" alt="CSS Spooky Ghost">
           </a>
@@ -177,6 +177,14 @@
         if (panel.contains(e.target) || toggle.contains(e.target)) return;
         closePanel();
       });
+
+      // Shrink nav slightly on scroll
+      const navContainer = document.querySelector('.nav-container');
+      function onScrollNav() {
+        if (window.scrollY > 20) navContainer.classList.add('nav-scrolled'); else navContainer.classList.remove('nav-scrolled');
+      }
+      window.addEventListener('scroll', onScrollNav, { passive: true });
+      onScrollNav();
     });
   </script>
 </body>
