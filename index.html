@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="hero">
@@ -44,9 +44,6 @@
         <div class="skill-item">
           <p><i class="fab fa-js" aria-hidden="true"></i> JavaScript</p>
         </div>
-     
-
-
       </div>
     </section>
 
@@ -55,22 +52,30 @@
       <div class="project-list">
         <article class="project-card">
           <h3>Audio Visualizer</h3>
-          <img src="img/audi-visual.gif" alt="Audio Visualizer">
+          <a href="https://github.com/garretgonzales/Audio-Waves" target="_blank" rel="noopener noreferrer" aria-label="Audio Visualizer project">
+            <img src="img/audi-visual.gif" alt="Audio Visualizer">
+          </a>
           <p>Quick design practice in effort to become more productive with basic HTML/CSS without the use of external libraries.</p>
         </article>
         <article class="project-card">
           <h3>CSS Spooky Ghost</h3>
-          <img src="img/spooky_ghost.gif" alt="CSS Spooky Ghost">
+          <a href="https://github.com/garretgonzales/css-only-animations" target="_blank" rel="noopener noreferrer" aria-label="CSS Spooky Ghost project">
+            <img src="img/spooky_ghost.gif" alt="CSS Spooky Ghost">
+          </a>
           <p>A repo of animations created using only CSS. Front end 'tings</p>
         </article>
         <article class="project-card">
           <h3>JS Drumkit</h3>
-          <img src="img/js-drumkit.gif" alt="JS Drumkit">
+          <a href="https://github.com/garretgonzales/JS-DrumKit" target="_blank" rel="noopener noreferrer" aria-label="JavaScript Drumkit project">
+            <img src="img/js-drumkit.gif" alt="JS Drumkit">
+          </a>
           <p>Interesting refresher project to practice DOM manipulation as well as stepping away from jQuery. The implementation CSS for animation was fun!</p>
         </article>
         <article class="project-card">
           <h3>React To-Do List</h3>
-          <img src="img/react to-do.gif" alt="React To-Do List">
+          <a href="https://github.com/garretgonzales/react-todo" target="_blank" rel="noopener noreferrer">
+            <img src="img/react to-do.gif" alt="React To-Do List">
+          </a>
           <p>A simple To-do application using create-react app to practice basic CRUD operations.</p>
         </article>
       </div>
@@ -155,6 +160,14 @@
         el.addEventListener('click', (ev) => {
           ev.preventDefault();
           openPanel();
+        });
+      });
+
+      // Prevent placeholder project links from jumping the page
+      const projectLinks = document.querySelectorAll('.project-card a[href="#"]');
+      projectLinks.forEach((el) => {
+        el.addEventListener('click', (ev) => {
+          ev.preventDefault();
         });
       });
 
