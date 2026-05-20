@@ -77,17 +77,16 @@ body {
 
 .project-list {
   margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
 .project-card {
-  display: inline-block;
-  width: calc(50% - 20px);
-  background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 6px;
   padding: 20px;
-  margin: 10px 10px 10px 0;
-  vertical-align: top;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
 .project-card h3 {
