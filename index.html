@@ -17,12 +17,21 @@
         <a href="#skills"><i class="fas fa-laptop-code"></i> Skills</a>
         <a href="#projects"><i class="fas fa-folder-open"></i> Projects</a>
         <a href="#contact"><i class="fas fa-envelope"></i> Contact Me</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
       </nav>
     </div>
     <div class="container hero-content">
       <h1 id="top">Hello, I'm David</h1>
-      <p>Welcome to my portfolio site. I build simple web projects and enjoy creating clean designs with HTML and CSS.</p>
+      <p class="hero-subtitle">UNT 26'</p>
+      <p>B.S. Information Science with Concentration in Data Science</p>
       <p class="hero-note">Scroll down to see my work and get in touch.</p>
+      <div class="hero-social">
+        <a href="https://www.linkedin.com/in/david-gonzales-961172172/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/garretgonzales" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://discord.com/users/300853728905265152" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      </div>
     </div>
   </header>
 
@@ -84,11 +93,6 @@
     <section class="section contact" id="contact">
       <h2>Contact</h2>
       <p>If you'd like to work together or ask a question, click the envelope icon at the bottom-right to open the contact form.</p>
-      <div class="contact-links">
-        <a href="https://www.linkedin.com/in/david-gonzales-961172172/" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/garretgonzales" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="#" class="contact-open" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      </div>
     </section>
   </main>
 
@@ -185,6 +189,30 @@
       }
       window.addEventListener('scroll', onScrollNav, { passive: true });
       onScrollNav();
+
+      // Theme toggle: persist preference and respect system setting
+      const themeToggle = document.getElementById('theme-toggle');
+      const root = document.body; // apply class to <body> so CSS selectors like `body.dark` match
+      function applyTheme(theme) {
+        if (theme === 'dark') root.classList.add('dark'); else root.classList.remove('dark');
+        // update icon
+        const icon = themeToggle.querySelector('i');
+        if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      }
+
+      // determine initial theme
+      const stored = localStorage.getItem('theme');
+      if (stored) applyTheme(stored); else {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+      }
+
+      themeToggle.addEventListener('click', () => {
+        const isDark = root.classList.contains('dark');
+        const next = isDark ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
+      });
     });
   </script>
 </body>
