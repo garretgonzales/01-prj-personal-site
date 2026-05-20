@@ -4,15 +4,19 @@
   <meta charset="UTF-8">
   <title>My Portfolio</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p6Y39Tx9xj3XGzEQydxn7st7dYSeW0bBOarG3hYAgm0a7KGnsx7XKcZz0G8nm1xA7yR+jY2bZ7S0w5GIFlhZ4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="hero">
     <div class="container nav-container">
       <nav class="main-nav">
-        <a href="#top"><i class="fa-solid fa-house"></i> Home</a>
-        <a href="#projects"><i class="fa-solid fa-folder-open"></i> Projects</a>
-        <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact Me</a>
+        <a href="#top"><i class="fas fa-home"></i> Home</a>
+        <a href="#skills"><i class="fas fa-laptop-code"></i> Skills</a>
+        <a href="#projects"><i class="fas fa-folder-open"></i> Projects</a>
+        <a href="#contact"><i class="fas fa-envelope"></i> Contact Me</a>
       </nav>
     </div>
     <div class="container">
@@ -26,6 +30,24 @@
     <section class="section intro">
       <h2>About Me</h2>
       <p>I am learning web development and enjoy making responsive pages with easy-to-read structure and styling. My focus is on clean layouts and clear content.</p>
+    </section>
+
+    <section class="section skills" id="skills">
+      <h2>Skills</h2>
+      <div class="skill-grid">
+        <div class="skill-item">
+          <p><i class="fab fa-html5" aria-hidden="true"></i> HTML5</p>
+        </div>
+        <div class="skill-item">
+          <p><i class="fab fa-css3-alt" aria-hidden="true"></i> CSS3</p>
+        </div>
+        <div class="skill-item">
+          <p><i class="fab fa-js" aria-hidden="true"></i> JavaScript</p>
+        </div>
+     
+
+
+      </div>
     </section>
 
     <section class="section projects" id="projects">
@@ -56,13 +78,43 @@
 
     <section class="section contact" id="contact">
       <h2>Contact</h2>
-      <p>If you'd like to work together or ask a question, please send an email or connect on social media.</p>
-      <p><strong>Email:</strong> hello@example.com</p>
+      <p>If you'd like to work together or ask a question, please use the form below. It will open your email app so I can receive your message.</p>
+      <form class="contact-form" action="mailto:hello@example.com" method="POST" enctype="text/plain">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="Name" placeholder="Your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" placeholder="your@email.com" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="Message" rows="6" placeholder="Write your message here" required></textarea>
+
+        <button type="submit">Send Email</button>
+      </form>
     </section>
   </main>
 
   <footer class="footer">
     <p>© 2026 David's Portfolio. Built with HTML and CSS.</p>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const fadeItems = document.querySelectorAll('body *:not(script):not(style)');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeItems.forEach((item) => {
+        item.classList.add('fade-in');
+        observer.observe(item);
+      });
+    });
+  </script>
 </body>
 </html>
