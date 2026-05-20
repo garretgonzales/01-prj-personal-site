@@ -2,10 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Personal Site</title>
+  <title>My Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Add your HTML content here -->
+  <header class="hero">
+    <div class="container nav-container">
+      <nav class="main-nav">
+        <a href="#top">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact Me</a>
+      </nav>
+    </div>
+    <div class="container">
+      <h1 id="top">Hello, I'm David</h1>
+      <p>Welcome to my portfolio site. I build simple web projects and enjoy creating clean designs with HTML and CSS.</p>
+      <p class="hero-note">Scroll down to see my work and get in touch.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section intro">
+      <h2>About Me</h2>
+      <p>I am learning web development and enjoy making responsive pages with easy-to-read structure and styling. My focus is on clean layouts and clear content.</p>
+    </section>
+
+    <section class="section projects" id="projects">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <article class="project-card">
+          <h3>Portfolio Page</h3>
+          <p>A one-page personal site that shows my skills and contact information.</p>
+        </article>
+        <article class="project-card">
+          <h3>Landing Page</h3>
+          <p>A simple marketing page with sections for features, testimonials, and a call to action.</p>
+        </article>
+        <article class="project-card">
+          <h3>Recipe Book</h3>
+          <p>A small collection of recipes with clean cards and easy navigation.</p>
+        </article>
+        <article class="project-card">
+          <h3>Contact Form</h3>
+          <p>A form layout that helps visitors send a message and stay connected.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <h2>Contact</h2>
+      <p>If you'd like to work together or ask a question, please send an email or connect on social media.</p>
+      <p><strong>Email:</strong> hello@example.com</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 David's Portfolio. Built with HTML and CSS.</p>
+  </footer>
 </body>
 </html>
